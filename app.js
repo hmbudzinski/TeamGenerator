@@ -31,7 +31,7 @@ inquirer.prompt([
     {
       type: "input",
       message: "What is your email?",
-      name: "officenumber",
+      name: "email",
     },
   ]).then(function(response) {
       console.log("Name: ", response.name); 
@@ -70,6 +70,21 @@ function createTeam(){
 function createEngineer(){
     inquirer.prompt([
         {
+        type: "input",
+        message: "What is your Engieers name?",
+        name: "name",
+        },
+        {
+        type: "input",
+        message: "What is your Engineers ID?",
+        name: "ID",
+        },
+        {
+        type: "input",
+        message: "What is your Engineers email?",
+        name: "email",
+        },
+        {
           type: "input",
           message: "What is your Engineers Github?",
           name: "github",
@@ -77,36 +92,47 @@ function createEngineer(){
       ]).then(function(response) {
           console.log("Github: ", response.github); 
     
-          let engineer = new Engineer(response.name, response.id, response.email, response.officeNumber);
+          let engineer = new Engineer(response.name, response.id, response.email, response.github);
     
           teamMembers.push(engineer);
           console.log(teamMembers);
     
           createTeam();
       });
-
-    console.log("Engineer!");
 }
 
 function createIntern(){
-        inquirer.prompt([
+    inquirer.prompt([
         {
-          type: "input",
-          message: "What school does your itern go to?",
-          name: "school",
+        type: "input",
+        message: "What is your Interns name?",
+        name: "name",
         },
-      ]).then(function(response) {
-          console.log("School: ", response.school); 
-    
-          let intern = new Intern(response.name, response.id, response.email, response.officeNumber);
-    
-          teamMembers.push(intern);
-          console.log(teamMembers);
-    
-          createTeam();
-      });
+        {
+        type: "input",
+        message: "What is your Interns ID?",
+        name: "ID",
+        },
+        {
+        type: "input",
+        message: "What is your Interns email?",
+        name: "email",
+        },
+        {
+        type: "input",
+        message: "What school does your intern go to?",
+        name: "school",
+        },
+    ]).then(function(response) {
+        console.log("School: ", response.school); 
 
-    console.log("intern!");
+        let intern = new Intern(response.name, response.id, response.email, response.school);
+
+        teamMembers.push(intern);
+        console.log(teamMembers);
+
+        createTeam();
+    });
 }
 
 function exit(){
