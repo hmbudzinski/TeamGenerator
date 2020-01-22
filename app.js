@@ -76,7 +76,7 @@ function createEngineer(){
         {
         type: "input",
         message: "What is your Engineers ID?",
-        name: "ID",
+        name: "id",
         },
         {
         type: "input",
@@ -110,7 +110,7 @@ function createIntern(){
         {
         type: "input",
         message: "What is your Interns ID?",
-        name: "ID",
+        name: "id",
         },
         {
         type: "input",
