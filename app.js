@@ -21,7 +21,7 @@ inquirer.prompt([
     {
       type: "input",
       message: "What is your ID?",
-      name: "ID",
+      name: "id",
     },
     {
       type: "input",
@@ -35,11 +35,11 @@ inquirer.prompt([
     },
   ]).then(function(response) {
       console.log("Name: ", response.name); 
-      console.log("ID: ", response.ID); 
+      console.log("ID: ", response.id); 
       console.log("Office Number: ", response.officenumber); 
       console.log("Email: ", response.email); 
 
-      let manager = new Manager(response.name, response.id, response.email, response.officeNumber);
+      let manager = new Manager(response.name, response.id, response.email, response.officenumber);
 
       teamMembers.push(manager);
       console.log(teamMembers);
@@ -57,7 +57,6 @@ function createTeam(){
         name: "team",
     },
     ]).then(function(response){
-        console.log("HERE:", response);
     if (response.team === "Engineer")
     createEngineer();
     if (response.team === "Intern")
@@ -65,7 +64,7 @@ function createTeam(){
     if (response.team === "Exit")
     exit();
     })
-}
+};
 
 function createEngineer(){
     inquirer.prompt([
@@ -99,7 +98,7 @@ function createEngineer(){
     
           createTeam();
       });
-}
+};
 
 function createIntern(){
     inquirer.prompt([
@@ -133,10 +132,11 @@ function createIntern(){
 
         createTeam();
     });
-}
+};
 
 function exit(){
+    console.log(teamMembers);
     fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
-}
+};
 
 startApp();
